@@ -77,12 +77,12 @@
     "labour": [
       {
         "date": "2012-10-12",
-        "total": 47,
+        "total": 47.99972222222222,
         "labour_by_time_period": {
           "period1": 14,
           "period2": 12,
           "period3": 10,
-          "period4": 11
+          "period4": 11.999722222222221
         }
       }
     ]

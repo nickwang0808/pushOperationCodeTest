@@ -108,7 +108,7 @@ function findMatchingPeriodsHours({
   const endBlock = (() => {
     if (
       timeBlocks[endBlockIndex].name === timeBlocks[startBlockIndex].name &&
-      daysCount <= 1
+      daysCount < 1
     )
       return [];
     const hour =
