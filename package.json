@@ -11,6 +11,7 @@
   "description": "",
   "dependencies": {
     "@types/date-fns": "^2.6.0",
+    "@types/node": "^18.7.18",
     "date-fns": "^2.29.3"
   },
   "devDependencies": {

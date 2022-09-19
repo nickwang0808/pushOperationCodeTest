@@ -2,6 +2,8 @@ import { Clock, Employee, testData, TimeData } from "./input";
 
 import { differenceInDays, isSameDay } from "date-fns";
 
+import fs from "fs";
+
 interface HourMinSec {
   hour: number;
   minute: number;
@@ -52,6 +54,11 @@ function findTimeBlockIndex({ hour, minute, second }: HourMinSec) {
   } else if (time >= 23 || time <= 5) {
     return 3;
   } else return -1;
+}
+
+function getYearMonthDate(input: string) {
+  const date = new Date(input);
+  return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 }
 
 function findMatchingPeriodsHours({
@@ -228,7 +235,7 @@ export function employeeTimePeriod({
       labour: [
         ...(computedTimeDataHashTable[employee.id]?.labour ?? []),
         {
-          date: clock.clock_in_datetime,
+          date: getYearMonthDate(clock.clock_in_datetime),
           total: timeBlocksWithHours.total,
           labour_by_time_period: timeBlocksWithHours.labourByTimePeriod,
         },
@@ -239,4 +246,5 @@ export function employeeTimePeriod({
   return Object.values(computedTimeDataHashTable);
 }
 
-console.log(JSON.stringify(employeeTimePeriod(testData), null, 2));
+const result = JSON.stringify(employeeTimePeriod(testData), null, 2);
+fs.writeFileSync("./output.json", result);
